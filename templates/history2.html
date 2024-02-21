@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transactions
+{% endblock %}
+
+{% block main %}
+<h1>Transactions</h1>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col" class="text-bg-primary p-3">Symbols</th>
+            <th scope="col" class="text-bg-primary p-3">Shares</th>
+            <th scope="col" class="text-bg-primary p-3">Price</th>
+            <th scope="col" class="text-bg-primary p-3">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in transactions %}
+        <tr>
+            <td style="color: {{ 'red' if row['shares'] < 0 else 'black' }}">{{row["symbol"]}}</td>
+            <td style="color: {{ 'red' if row['shares'] < 0 else 'black' }}">{{row["shares"]}}</td>
+            <td style="color: {{ 'red' if row['shares'] < 0 else 'black' }}">{{row["price"]}}</td>
+            <td style="color: {{ 'red' if row['shares'] < 0 else 'black' }}">{{row["date"]}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

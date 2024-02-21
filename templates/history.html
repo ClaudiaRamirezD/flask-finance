@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transactions
+{% endblock %}
+
+{% block main %}
+    <h1>Transactions</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col" class="text-bg-primary p-3">Type</th>
+                <th scope="col" class="text-bg-primary p-3">Symbols</th>
+                <th scope="col" class="text-bg-primary p-3">Shares</th>
+                <th scope="col" class="text-bg-primary p-3">Price</th>
+                <th scope="col" class="text-bg-primary p-3">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in transactions %}
+                <tr>
+                    <td class="{% if row['shares'] > 0 %}text-success-emphasis{% else %}text-danger-emphasis{% endif %}">
+                        {% if row['shares'] > 0 %}BOUGHT{% else %}SOLD{% endif %}
+                    </td>
+                    <td>{{ row['symbol'] }}</td>
+                    <td>{{ row['shares'] }}</td>
+                    <td>{{ row['formatted_price'] }}</td>
+                    <td>{{ row['date'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

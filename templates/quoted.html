@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <h1>Quotation</h1>
+
+    <h3>Symbol: {{symbol}}</h3>
+    <h3>Price: {{price | usd}}</h3>
+
+    <form action="/buy" method="post">
+        <input type="hidden" name="symbol" value="{{symbol}}">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Shares To Buy" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Buy</button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <h1>Portfolio</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col" class="text-bg-primary p-3">Symbols</th>
+                <th scope="col" class="text-bg-primary p-3">Shares</th>
+                <th scope="col" class="text-bg-primary p-3">Price</th>
+                <th scope="col" class="text-bg-primary p-3">TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in database%}
+                <tr>
+                    <td>{{ row["symbol"] }}</td>
+                    <td>{{ row["shares"] }}</td>
+                    <td>{{ row["formatted_price"] }}</td>
+                    <td>{{ row["formatted_total"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <th scope="row">Cash:</th>
+                <th scope="row">{{ cash }}</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <th scope="row">TOTAL:</th>
+                <th scope="row">{{ grand_total }}</th>
+            </tr>
+        </tfoot>
+    </table>
+
+
+
+
+{% endblock %}
